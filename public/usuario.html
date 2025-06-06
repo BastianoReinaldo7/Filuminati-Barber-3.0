@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido Usuario</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/barber1.jpg'); /* Ruta corregida */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Fija la imagen de fondo */
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f39c12;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(243, 156, 18, 0.3);
+            color: white;
+        }
+
+        main {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-top: 100px; /* Espacio para el header */
+            margin-bottom: 100px; /* Espacio para el footer */
+        }
+
+        .agregar-corte {
+            margin-bottom: 20px;
+        }
+
+        .agregar-corte h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f39c12;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .cortes-section {
+            margin-top: 20px;
+        }
+
+        .cortes-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .corte-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .corte-item h3 {
+            margin: 0 0 10px;
+            color: #f39c12;
+        }
+
+        .corte-item p {
+            margin: 5px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        footer p {
+            margin: 0;
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Filuminati</h1>
+        <nav>
+            <ul>
+                <li><a href="/usuario.html">Inicio</a></li>
+                <li><a href="/perfil.html">Perfil</a></li>
+                <li><a href="/index.html">Cerrar Sesión</a></li> <!-- Cambiado a una ruta de logout -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p>Has iniciado sesión correctamente.</p>
+
+        <!-- Formulario para agregar un nuevo corte -->
+        <section class="agregar-corte">
+            <h2>Agregar Nuevo Corte</h2>
+            <form id="form-corte">
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo_servicio">Tipo de Servicio:</label>
+                    <select id="tipo_servicio" name="tipo_servicio" required>
+                        <option value="Corte">Corte</option>
+                        <option value="Corte y Barba">Corte y Barba</option>
+                        <option value="Solo Barba">Solo Barba</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+                </div>
+                <button type="submit">Agregar Corte</button>
+            </form>
+        </section>
+
+        <!-- Sección para mostrar los cortes del usuario -->
+        <section class="cortes-section">
+            <h2>Mis Cortes</h2>
+            <div id="lista-cortes">
+                <!-- Los cortes se cargarán dinámicamente aquí -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Barbería. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Obtener el formulario y la lista de cortes
+        const formCorte = document.getElementById('form-corte');
+        const listaCortes = document.getElementById('lista-cortes');
+
+        // Manejar el envío del formulario
+        formCorte.addEventListener('submit', function (e) {
+            e.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
+
+            // Obtener los datos del formulario
+            const fecha = document.getElementById('fecha').value;
+            const tipoServicio = document.getElementById('tipo_servicio').value;
+            const descripcion = document.getElementById('descripcion').value;
+
+            // Validar los datos
+            if (!fecha || !tipoServicio) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Enviar los datos al servidor
+            fetch('/agregar-corte', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ fecha, tipo_servicio: tipoServicio, descripcion })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Corte agregado correctamente');
+                    formCorte.reset(); // Limpiar el formulario
+                    cargarCortes(); // Recargar la lista de cortes
+                } else {
+                    alert('Error al agregar el corte');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al conectar con el servidor');
+            });
+        });
+
+        // Función para cargar los cortes del usuario
+        function cargarCortes() {
+            fetch('/obtener-cortes')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la solicitud');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    listaCortes.innerHTML = ''; // Limpiar la lista
+                    if (data.length === 0) {
+                        listaCortes.innerHTML = '<p>No tienes cortes registrados.</p>';
+                    } else {
+                        data.forEach(corte => {
+                            const corteItem = document.createElement('div');
+                            corteItem.className = 'corte-item';
+                            corteItem.innerHTML = `
+                                <h3>Corte #${corte.id}</h3>
+                                <p><strong>Fecha:</strong> ${corte.fecha}</p>
+                                <p><strong>Servicio:</strong> ${corte.tipo_servicio}</p>
+                                <p><strong>Descripción:</strong> ${corte.descripcion || 'N/A'}</p>
+                            `;
+                            listaCortes.appendChild(corteItem);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    listaCortes.innerHTML = '<p>Error al cargar los cortes.</p>';
+                });
+        }
+
+        // Cargar los cortes al abrir la página
+        cargarCortes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Barbería Filuminati</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/barber1.jpg'); /* Ruta corregida */
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f39c12;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .register-link {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            display: none; /* Oculto por defecto */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Iniciar Sesión<br>Barbería Filuminati</h2>
+        <!-- Mensaje de error dinámico -->
+        <p id="error-message" class="error-message">Correo o contraseña incorrectos</p>
+        <form id="login-form">
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+            
+            <button type="submit">Ingresar</button>
+        </form>
+        <div class="register-link">
+            <p>¿No tienes cuenta? <a href="/registro.html">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
+
+            const correo = document.getElementById('correo').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            // Validar que los campos no estén vacíos
+            if (!correo || !contrasena) {
+                errorMessage.textContent = 'Por favor, completa todos los campos.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ correo, contrasena })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Si la respuesta es correcta, redirigir a usuario.html
+                    window.location.href = '/usuario.html';
+                } else {
+                    // Si el login falla, mostrar el mensaje de error
+                    errorMessage.textContent = 'Correo o contraseña incorrectos.';
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Error al conectar con el servidor.';
+                errorMessage.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

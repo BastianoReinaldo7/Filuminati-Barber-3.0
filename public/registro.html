@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - Barbería Filuminati</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/barber1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 40px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f39c12;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        #login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message, .error-message {
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Regístrate en Barbería Filuminati</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Formulario de Registro</h2>
+            <p id="success-message" class="success-message">¡Usuario registrado con éxito!</p>
+            <p id="error-message" class="error-message"></p>
+
+            <form id="registro-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="comuna">Comuna:</label>
+                    <input type="text" id="comuna" name="comuna" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+
+                <button type="submit">Registrarse</button>
+            </form>
+
+            <div id="login-link">
+                <p>¿Ya tienes una cuenta? <a href="index.html">Iniciar sesión aquí</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('registro-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const correo = document.getElementById('correo').value;
+            const comuna = document.getElementById('comuna').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+
+            try {
+                const response = await fetch('/registrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, apellido, correo, comuna, contrasena })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    document.getElementById('registro-form').reset();
+                } else {
+                    errorMessage.textContent = result.error;
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Error al conectar con el servidor.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+R

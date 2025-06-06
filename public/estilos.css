@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.login-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #4cae4c;
+}
+
+.register-link {
+    margin-top: 10px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #343a40; /* Color oscuro */
+    color: #ffffff; /* Color del texto */
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: center; /* Centrar los elementos */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff; /* Color de los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+#welcome {
+    background-color: #ffffff; /* Color de fondo de la sección */
+    border: 2px solid #343a40; /* Borde que representa la barbería */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #343a40; /* Color oscuro del pie de página */
+    color: #ffffff; /* Color del texto del pie de página */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.cuts-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.cut-photo {
+    width: 200px; /* Ajusta el tamaño según lo necesites */
+    height: auto;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.image-grid {
+    display: grid; /* Utiliza grid para el contenedor */
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas de igual tamaño */
+    gap: 10px; /* Espacio entre las imágenes */
+    margin: 20px; /* Margen externo para el contenedor */
+}
+
+.square-image {
+    width: 100%; /* Ocupa el 100% del ancho de la celda */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Mantiene la proporción y recorta la imagen si es necesario */
+    border-radius: 10px; /* Bordes redondeados */
+}

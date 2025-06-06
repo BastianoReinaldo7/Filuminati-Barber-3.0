@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* Estilo para agregar la imagen de fondo */
+        body {
+            background-image: url('img/barber1.jpg'); /* Ruta corregida */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* Para que el texto sea legible sobre el fondo */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Perfil de Usuario</h1>
+        <nav>
+            <ul>
+                <li><a href="/usuario.html">Inicio</a></li>
+                <li><a href="/registro.html">Registrar</a></li>
+                <li><a href="/index.html">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile-info">
+            <h2>Datos del Usuario</h2>
+            <p><strong>Número de Cortes:</strong> 5</p>
+            <div class="cuts-gallery">
+                <h3>Fotos de Cortes Realizados</h3>
+                <img src="ruta/a/tu/foto1.jpg" alt="Corte 1" class="cut-photo">
+                <img src="ruta/a/tu/foto2.jpg" alt="Corte 2" class="cut-photo">
+                <img src="ruta/a/tu/foto3.jpg" alt="Corte 3" class="cut-photo">
+                <!-- Agrega más fotos según sea necesario -->
+            </div>
+        </section>
+
+        <section id="comments">
+            <h2>Comentarios</h2>
+            <!-- Sección de comentarios con un cuadro bonito -->
+            <div class="comment-box">
+                <form action="/enviar-comentario" method="POST">
+                    <textarea name="comment" rows="4" placeholder="Deja tu comentario aquí..." required></textarea>
+                    <button type="submit">Enviar Comentario</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Estilos del encabezado */
+        header {
+            background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro para mayor contraste */
+            padding: 20px;
+            text-align: center; /* Centra el texto en el encabezado */
+            position: fixed; /* Fija el encabezado en la parte superior */
+            top: 0; /* Posiciona el encabezado en la parte superior */
+            left: 0; /* Alinea el encabezado a la izquierda */
+            right: 0; /* Alinea el encabezado a la derecha */
+            z-index: 10; /* Asegura que el encabezado esté por encima */
+        }
+
+        /* Estilo del cuadro de comentarios */
+        .comment-box {
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro con transparencia */
+            padding: 20px;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Sombra para darle profundidad */
+            max-width: 600px;
+            margin: 20px auto; /* Centra el cuadro */
+            color: white;
+        }
+
+        .comment-box form textarea {
+            width: 100%; /* El textarea ocupa todo el ancho del cuadro */
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+            background-color: #f4f4f4; /* Fondo claro */
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .comment-box form button {
+            background-color: #f39c12; /* Color del botón */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comment-box form button:hover {
+            background-color: #e67e22; /* Color al pasar el mouse */
+        }
+
+        /* Estilos del footer */
+        footer {
+            text-align: center; /* Centra el texto del footer */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro para el footer */
+            position: fixed; /* Fija el footer en la parte inferior */
+            bottom: 0; /* Posición en la parte inferior */
+            left: 0; /* Alinea el footer a la izquierda */
+            right: 0; /* Alinea el footer a la derecha */
+            width: 100%; /* Asegura que el footer ocupe todo el ancho */
+            z-index: 10; /* Asegura que el footer esté por encima */
+        }
+    </style>
+
+    <footer>
+        <p>© 2024 Barbería. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
