@@ -3,7 +3,7 @@ const express = require('express');
 const mysql = require('mysql2/promise'); // Usamos la versión promise-based
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs'); // ✅ Corregido (antes era 'bcrypts')
 const path = require('path');
 
 const app = express();
@@ -67,7 +67,7 @@ app.post('/registrar', async (req, res) => {
     }
 
     try {
-        const hashedPassword = await bcrypt.hash(contrasena, 10);
+        const hashedPassword = await bcryptjs.hash(contrasena, 10); // ✅ Corregido (antes era 'bcrypt')
         const query = `INSERT INTO usuarios (nombre, apellido, correo, comuna, contrasena) VALUES (?, ?, ?, ?, ?)`;
         
         const [results] = await pool.execute(query, [nombre, apellido, correo, comuna, hashedPassword]);
@@ -97,7 +97,7 @@ app.post('/login', async (req, res) => {
 
         if (results.length > 0) {
             const user = results[0];
-            const isMatch = await bcrypt.compare(contrasena, user.contrasena);
+            const isMatch = await bcryptjs.compare(contrasena, user.contrasena); // ✅ Corregido (antes era 'bcrypt')
 
             if (isMatch) {
                 req.session.loggedin = true;
